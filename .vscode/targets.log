@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 29 15:42:26 2022
+# Make data base, printed on Fri Jul 29 18:31:26 2022
 
 # Variables
 
@@ -17,7 +19,7 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-STARSHIP_SESSION_KEY = 7562327831808156
+STARSHIP_SESSION_KEY = 2084322350662830
 # environment
 LC_NAME = en_US.UTF-8
 # environment
@@ -111,7 +113,7 @@ SHELL = /bin/sh
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 3
+SHLVL = 2
 # environment
 MAKELEVEL := 0
 # default
@@ -128,6 +130,8 @@ MOTD_SHOWN = pam
 ^F = $(notdir $^)
 # environment
 LC_TIME = en_US.UTF-8
+# environment
+_JAVA_AWT_WM_NONREPARENTING = 1
 # environment
 LC_TELEPHONE = en_US.UTF-8
 # automatic
@@ -211,7 +215,7 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 LC_IDENTIFICATION = en_US.UTF-8
 # variable set hash-table stats:
-# Load=100/1024=10%, Rehash=0, Collisions=5/130=4%
+# Load=101/1024=10%, Rehash=0, Collisions=5/131=4%
 
 # Pattern-specific Variable Values
 
@@ -270,8 +274,6 @@ run:
 # strcache performance: lookups = 22 / hit rate = 22%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/22=0%
-# Finished Make data base on Fri Jul 29 15:42:26 2022
+# Finished Make data base on Fri Jul 29 18:31:26 2022
 
  
-make: *** No rule to make target 'all'.  Stop.
-

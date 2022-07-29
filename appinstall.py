@@ -49,3 +49,22 @@ def checksysupdate():
         print("You are on the latest version!")
 
 
+def checkappupdate(app):
+    d = open(f"{app}/config.txt", "r")
+    uname = d.readline()
+    repo = d.readline()
+    currentversion = d.readline()
+    d.close()
+
+    latestversion = requests.get(f"https://raw.githubusercontent.com/{uname}/{repo}/master/version.txt").text
+    if latestversion == currentversion:
+        print("You are on the latest version!")
+    else:
+        print(f"Current version of {app} is {currentversion}")
+        print(f"Latest version of {app} is {latestversion}")
+        print(f"Are you sure you want to update {app}?")
+        choice = input("y for yes, or anything else for no: ")
+        if choice == "y" or choice == "Y":
+            print(f"Updating {app} to {latestversion}")
+            os.system(f"cd {app} && git pull")
+            print("Updated!")
