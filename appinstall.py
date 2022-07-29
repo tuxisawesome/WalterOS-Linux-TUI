@@ -39,9 +39,12 @@ def checksysupdate():
     print(f"Version {latestversion} is the latest version")
     print("")
     if latestversion != currentversion:
-        print(f"Updating {currentversion} to {latestversion}")
-        os.system("git pull")
-
+        print(f"Are you sure you want to update {currentversion} to {latestversion}?")
+        choice = input("y for yes, or anything else for no: ")
+        if choice == "y" or choice == "Y":
+            print(f"Updating {currentversion} to {latestversion}")
+            os.system("git pull")
+            print("Updated. Please restart computer...")
     else:
         print("You are on the latest version!")
 
