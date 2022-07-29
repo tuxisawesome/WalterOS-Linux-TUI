@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 29 14:44:02 2022
+# Make data base, printed on Fri Jul 29 15:42:26 2022
 
 # Variables
 
@@ -19,13 +17,15 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-STARSHIP_SESSION_KEY = 1646123003375132
+STARSHIP_SESSION_KEY = 7562327831808156
 # environment
 LC_NAME = en_US.UTF-8
 # environment
 LC_NUMERIC = en_US.UTF-8
 # environment
 VSCODE_CWD = /home/walterbrobson
+# environment
+WINDOWID = 27262978
 # environment
 LC_ADDRESS = en_US.UTF-8
 # default
@@ -51,9 +51,11 @@ XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # automatic
 %F = $(notdir $%)
 # environment
+ALACRITTY_SOCKET = /run/user/1000/Alacritty-:0-1755614.sock
+# environment
 VSCODE_CODE_CACHE_PATH = /home/walterbrobson/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session3
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session7
 # environment
 LANG = C
 # environment
@@ -83,7 +85,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 1718097
+VSCODE_PID = 1755805
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -109,7 +111,7 @@ SHELL = /bin/sh
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 2
+SHLVL = 3
 # environment
 MAKELEVEL := 0
 # default
@@ -127,8 +129,6 @@ MOTD_SHOWN = pam
 # environment
 LC_TIME = en_US.UTF-8
 # environment
-_JAVA_AWT_WM_NONREPARENTING = 1
-# environment
 LC_TELEPHONE = en_US.UTF-8
 # automatic
 ?F = $(notdir $?)
@@ -136,6 +136,8 @@ LC_TELEPHONE = en_US.UTF-8
 XDG_SEAT = seat0
 # environment
 XDG_CURRENT_DESKTOP = 
+# environment
+ALACRITTY_LOG = /tmp/Alacritty-1755614.log
 # automatic
 +F = $(notdir $+)
 # environment
@@ -153,7 +155,7 @@ LOGNAME = walterbrobson
 # environment
 XDG_VTNR = 1
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := run
 # environment
 EDITOR = emacsclient -t -a ''
 # environment
@@ -177,6 +179,8 @@ LC_PAPER = en_US.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
+COLORTERM = truecolor
+# environment
 LC_CTYPE = en_US.UTF-8
 # environment
 XDG_SESSION_CLASS = user
@@ -189,7 +193,9 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-fd49caa7-1.69.2-main.sock
 # environment
-XDG_SESSION_ID = 5
+TERM = xterm-256color
+# environment
+XDG_SESSION_ID = 9
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -205,7 +211,7 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 LC_IDENTIFICATION = en_US.UTF-8
 # variable set hash-table stats:
-# Load=96/1024=9%, Rehash=0, Collisions=4/125=3%
+# Load=100/1024=10%, Rehash=0, Collisions=5/130=4%
 
 # Pattern-specific Variable Values
 
@@ -226,7 +232,7 @@ LC_IDENTIFICATION = en_US.UTF-8
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-29 13:57:09.316564399
+#  Last modified 2022-07-29 15:14:21.236387072
 #  File has been updated.
 #  Successfully updated.
 
@@ -243,20 +249,29 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
+run:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 2):
+	python3 main.py
+
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/14=0%
+# Load=5/1024=0%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 148 B / avg = 9 B
-# current buf: size = 8162 B / used = 148 B / count = 16 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 152 B / avg = 8 B
+# current buf: size = 8162 B / used = 152 B / count = 17 / avg = 8 B
 
-# strcache performance: lookups = 20 / hit rate = 20%
+# strcache performance: lookups = 22 / hit rate = 22%
 # hash-table stats:
-# Load=16/8192=0%, Rehash=0, Collisions=0/20=0%
-# Finished Make data base on Fri Jul 29 14:44:02 2022
+# Load=17/8192=0%, Rehash=0, Collisions=0/22=0%
+# Finished Make data base on Fri Jul 29 15:42:26 2022
 
  
+make: *** No rule to make target 'all'.  Stop.
+

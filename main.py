@@ -13,6 +13,7 @@ def execpkgloop():
         print("Press 1 for Checking system update")
         print("Press 2 followed by the app for installing a app")
         print("Press 3 followed by the app to remove the app")
+        print("Press 4 to list all applications")
         print("Press b to go back")
         print("Press e to exit")
         choice = input(f"WalterOS::{currentversion} | wpkg> ")
@@ -26,6 +27,8 @@ def execpkgloop():
         elif choice.startswith("3"):
             apptoremove = choice[2:]
             appinstall.removeapp(apptoremove)
+        elif choice == "4":
+            print(next(os.walk('.'))[1])
         elif choice == "e" or choice == "E":
             print("Bye")
             sys.exit()
