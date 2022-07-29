@@ -49,7 +49,10 @@ def execloop():
             sys.exit()
         elif choice.startswith("r"):
             app = choice[2:]
-            appinstall.runapp(app)
+            try:
+                appinstall.runapp(app)
+            except:
+                print("The app is not there...")
         print("")
     
     
