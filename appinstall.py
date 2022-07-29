@@ -21,7 +21,7 @@ def runapp(name):
 def removeapp(name):
     print(f"Are you sure you want to remove {name}?")
     choice = input(f"N or n for no, or anything else for yes: ")
-    if choice is not "N" or choice is not "n":
+    if choice != "N" or choice != "n":
         os.system(f"rm -rf {name}")
         print(f"Removed {name}")
     else:

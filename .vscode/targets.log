@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 29 13:57:09 2022
+# Make data base, printed on Fri Jul 29 14:44:02 2022
 
 # Variables
 
@@ -83,7 +83,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 1692053
+VSCODE_PID = 1718097
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -213,9 +213,9 @@ LC_IDENTIFICATION = en_US.UTF-8
 
 # Directories
 
-# . (device 2050, inode 790061): 8 files, no impossibilities.
+# . (device 2050, inode 790061): 11 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -226,7 +226,7 @@ LC_IDENTIFICATION = en_US.UTF-8
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-29 13:53:18.752928646
+#  Last modified 2022-07-29 13:57:09.316564399
 #  File has been updated.
 #  Successfully updated.
 
@@ -251,12 +251,12 @@ all:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 13 / storage = 114 B / avg = 8 B
-# current buf: size = 8162 B / used = 114 B / count = 13 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 148 B / avg = 9 B
+# current buf: size = 8162 B / used = 148 B / count = 16 / avg = 9 B
 
-# strcache performance: lookups = 17 / hit rate = 23%
+# strcache performance: lookups = 20 / hit rate = 20%
 # hash-table stats:
-# Load=13/8192=0%, Rehash=0, Collisions=0/17=0%
-# Finished Make data base on Fri Jul 29 13:57:09 2022
+# Load=16/8192=0%, Rehash=0, Collisions=0/20=0%
+# Finished Make data base on Fri Jul 29 14:44:02 2022
 
  

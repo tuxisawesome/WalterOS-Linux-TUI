@@ -10,12 +10,12 @@ print(f"WalterOS version {currentversion}")
 def execpkgloop():
     keepexecpkgloop = True
     while keepexecpkgloop:
-        print("Press 1 for Package Manager")
+        print("Press 1 for Checking system update")
         print("Press b to go back")
         print("Press e to exit")
         choice = input(f"WalterOS::{currentversion} | wpkg> ")
         if choice == "1":
-            execpkgloop()
+            appinstall.checksysupdate()
         elif choice == "e" or choice == "E":
             print("Bye")
             sys.exit()
