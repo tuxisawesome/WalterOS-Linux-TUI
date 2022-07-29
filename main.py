@@ -39,6 +39,7 @@ def execloop():
     keepexecloop = True
     while keepexecloop:
         print("Press 1 for Package Manager")
+        print("Press r followed by the app to run the app")
         print("Press e to exit")
         choice = input(f"WalterOS::{currentversion}> ")
         if choice == "1":
@@ -46,6 +47,9 @@ def execloop():
         elif choice == "e" or choice == "E":
             print("Bye")
             sys.exit()
+        elif choice.startswith("r"):
+            app = choice[2:]
+            appinstall.runapp(app)
         print("")
     
     
