@@ -2,8 +2,10 @@ import appinstall
 import os
 import sys
 import time
+cv = open("version.txt", "r")
+currentversion = cv.readline()
+cv.close()
 
-currentversion = open("version.txt", "r")
 print(f"WalterOS version {currentversion}")
 def execpkgloop():
     keepexecpkgloop = True
