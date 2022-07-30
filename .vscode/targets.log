@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 29 18:31:26 2022
+# Make data base, printed on Fri Jul 29 21:34:13 2022
 
 # Variables
 
@@ -19,15 +19,13 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-STARSHIP_SESSION_KEY = 2084322350662830
+STARSHIP_SESSION_KEY = 1331824176219741
 # environment
 LC_NAME = en_US.UTF-8
 # environment
 LC_NUMERIC = en_US.UTF-8
 # environment
 VSCODE_CWD = /home/walterbrobson
-# environment
-WINDOWID = 27262978
 # environment
 LC_ADDRESS = en_US.UTF-8
 # default
@@ -53,11 +51,9 @@ XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # automatic
 %F = $(notdir $%)
 # environment
-ALACRITTY_SOCKET = /run/user/1000/Alacritty-:0-1755614.sock
-# environment
 VSCODE_CODE_CACHE_PATH = /home/walterbrobson/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session7
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # environment
 LANG = C
 # environment
@@ -87,7 +83,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 1755805
+VSCODE_PID = 2167
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -140,8 +136,6 @@ LC_TELEPHONE = en_US.UTF-8
 XDG_SEAT = seat0
 # environment
 XDG_CURRENT_DESKTOP = 
-# environment
-ALACRITTY_LOG = /tmp/Alacritty-1755614.log
 # automatic
 +F = $(notdir $+)
 # environment
@@ -183,8 +177,6 @@ LC_PAPER = en_US.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-COLORTERM = truecolor
-# environment
 LC_CTYPE = en_US.UTF-8
 # environment
 XDG_SESSION_CLASS = user
@@ -197,9 +189,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-fd49caa7-1.69.2-main.sock
 # environment
-TERM = xterm-256color
-# environment
-XDG_SESSION_ID = 9
+XDG_SESSION_ID = 2
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -215,7 +205,7 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 LC_IDENTIFICATION = en_US.UTF-8
 # variable set hash-table stats:
-# Load=101/1024=10%, Rehash=0, Collisions=5/131=4%
+# Load=96/1024=9%, Rehash=0, Collisions=4/126=3%
 
 # Pattern-specific Variable Values
 
@@ -274,6 +264,6 @@ run:
 # strcache performance: lookups = 22 / hit rate = 22%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/22=0%
-# Finished Make data base on Fri Jul 29 18:31:26 2022
+# Finished Make data base on Fri Jul 29 21:34:13 2022
 
  
