@@ -2,7 +2,7 @@ import os
 import sys
 import requests
 
-def installapp(url, name):
+def installapp(name):
     try:
         print(f"Are you sure you want to install {name}?")
         choice = input(f"N or n for no, or anything else for yes: ")
@@ -50,13 +50,24 @@ def checksysupdate():
 
 
 def checkappupdate(app):
-    d = open(f"{app}/config.txt", "r")
-    uname = d.readline()
-    repo = d.readline()
+    appavailable = False
+    d = open(f"sources.txt", "r")
+    print("Checking package sources...")
+    for index, line in enumerate(d):
+        if appavailable:
+            weburl = line.strip()
+            break
+        if line.strip() == app:
+            print(f"Found {app} in sources!")
+            appfoldername = line.strip()
+            appavailable = True
+            continue
+        print("Line {}: {}".format(index, line.strip()))
+    
     currentversion = d.readline()
     d.close()
 
-    latestversion = requests.get(f"https://raw.githubusercontent.com/{uname}/{repo}/master/version.txt").text
+    latestversion = requests.get(weburl).text
     if latestversion == currentversion:
         print("You are on the latest version!")
     else:

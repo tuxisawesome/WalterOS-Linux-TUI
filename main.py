@@ -23,8 +23,7 @@ def execpkgloop():
 
         elif choice.startswith("2"):
             apptoinstall = choice[2:]
-            appurl = input("The URL of the app: ")
-            appinstall.installapp(appurl, apptoinstall)
+            appinstall.installapp(apptoinstall)
         elif choice.startswith("3"):
             apptoremove = choice[2:]
             appinstall.removeapp(apptoremove)
