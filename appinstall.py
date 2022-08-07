@@ -62,10 +62,12 @@ def checkappupdate(app):
             appfoldername = line.strip()
             appavailable = True
             continue
-        print("Line {}: {}".format(index, line.strip()))
-    
-    currentversion = d.readline()
+
     d.close()
+    cv = open(f"{app}/version.txt")
+
+    currentversion = cv.readline()
+    cv.close()
 
     latestversion = requests.get(weburl).text
     if latestversion == currentversion:
