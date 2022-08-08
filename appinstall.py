@@ -4,6 +4,24 @@ import requests
 
 def installapp(name):
     try:
+        appavailable = False
+        appfoldername = False
+        weburl = False
+        d = open(f"sources.txt", "r")
+        print("Checking package sources...")
+        for index, line in enumerate(d):
+            if appavailable:
+                weburl = line.strip()
+                break
+            if line.strip() == app:
+                print(f"Found {app} in sources!")
+                appfoldername = line.strip()
+                appavailable = True
+                continue
+    
+        d.close()
+        if weburl == False or appfoldername == False or appavailable == False:
+            return 1
         print(f"Are you sure you want to install {name}?")
         choice = input(f"N or n for no, or anything else for yes: ")
         if choice != "N" or choice != "n":
