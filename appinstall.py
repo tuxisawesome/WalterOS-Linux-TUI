@@ -7,7 +7,7 @@ def installapp(name):
         appavailable = False
         appfoldername = False
         weburl = False
-        d = open(f"sources.txt", "r")
+        d = open(f"sources.conf", "r")
         print("Checking package sources...")
         for index, line in enumerate(d):
             if appavailable:
@@ -35,7 +35,7 @@ def installapp(name):
 
 def listapps():
     counter = 0
-    d = open(f"sources.txt", "r")
+    d = open(f"sources.conf", "r")
     print("Checking package sources...")
 
     for index, line in enumerate(d):
@@ -51,7 +51,7 @@ def runapp(app):
     appfoldername = False
     weburl = False
 
-    d = open(f"sources.txt", "r")
+    d = open(f"sources.conf", "r")
     print("Checking package sources...")
 
     for index, line in enumerate(d):
@@ -73,7 +73,7 @@ def removeapp(name):
     appavailable = False
     appfoldername = False
     weburl = False
-    d = open(f"sources.txt", "r")
+    d = open(f"sources.conf", "r")
     print("Checking package sources...")
     for index, line in enumerate(d):
         if appavailable:
@@ -123,7 +123,7 @@ def checkappupdate(app):
     appavailable = False
     appfoldername = False
     weburl = False
-    d = open(f"sources.txt", "r")
+    d = open(f"sources.conf", "r")
     print("Checking package sources...")
     for index, line in enumerate(d):
         if appavailable:
