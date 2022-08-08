@@ -46,6 +46,7 @@ def execloop():
     while keepexecloop:
         print("Press 1 for Package Manager")
         print("Press r followed by the app to run the app")
+        print("Press p for power options")
         print("Press e to exit")
         choice = input(f"WalterOS::{currentversion}> ")
         if choice == "1":
@@ -53,6 +54,14 @@ def execloop():
         elif choice == "e" or choice == "E":
             print("Bye")
             sys.exit()
+        elif choice == "p" or choice == "P":
+            print("s for shutdown, r for restart")
+            choice = input(f"WalterOS::{currentversion} | power> ")
+            if choice == "s" or choice == "S":
+                os.system("poweroff")
+                os.system("shutdown")
+            elif choice == "p" or choice == "P":
+                os.system("reboot")
         elif choice.startswith("r"):
             app = choice[2:]
             try:
