@@ -28,7 +28,7 @@ def execpkgloop():
             apptoremove = choice[2:]
             appinstall.removeapp(apptoremove)
         elif choice == "4":
-            print(next(os.walk('.'))[1])
+            appinstall.listapps()
         elif choice.startswith("5"):
             apptoupdate = choice[2:]
             appinstall.checkappupdate(apptoupdate)

@@ -33,6 +33,19 @@ def installapp(name):
     except:
         print("Installing failed")
 
+def listapps():
+    counter = 0
+    d = open(f"sources.txt", "r")
+    print("Checking package sources...")
+
+    for index, line in enumerate(d):
+        counter = counter + 1
+        if counter % 2 != 0:
+            print(line.strip())
+
+    d.close()
+
+
 def runapp(app):
     appavailable = False
     appfoldername = False
