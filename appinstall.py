@@ -37,12 +37,13 @@ def listapps():
     counter = 0
     d = open(f"sources.conf", "r")
     print("Checking package sources...")
-
+    print("-----------------------")
     for index, line in enumerate(d):
         counter = counter + 1
         if counter % 2 != 0:
             print(line.strip())
-
+    print("")
+    print("-----------------------")
     d.close()
 
 
