@@ -5,8 +5,7 @@ import requests
 def installapp(name):
     try:
         appavailable = False
-        appfoldername = False
-        weburl = False
+
         d = open(f"sources.conf", "r")
         print("Checking package sources...")
         for index, line in enumerate(d):
@@ -20,13 +19,13 @@ def installapp(name):
                 continue
     
         d.close()
-        if weburl == False or appfoldername == False or appavailable == False:
+        if appavailable == False:
             print("App not found!")
             return 1
         print(f"Are you sure you want to install {name}?")
         choice = input(f"N or n for no, or anything else for yes: ")
         if choice != "N" or choice != "n":
-            os.system(f"git clone {url} {name}")
+            os.system(f"git clone {weburl} {name}")
             os.system(f"python3 {name}/setup.py")
             print(f"Installed {name}")
         else:
