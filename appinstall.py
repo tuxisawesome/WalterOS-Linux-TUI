@@ -21,6 +21,7 @@ def installapp(name):
     
         d.close()
         if weburl == False or appfoldername == False or appavailable == False:
+            print("App not found!")
             return 1
         print(f"Are you sure you want to install {name}?")
         choice = input(f"N or n for no, or anything else for yes: ")
@@ -38,6 +39,7 @@ def listapps():
     d = open(f"sources.conf", "r")
     print("Checking package sources...")
     print("-----------------------")
+    print("")
     for index, line in enumerate(d):
         counter = counter + 1
         if counter % 2 != 0:
@@ -71,32 +73,35 @@ def runapp(app):
     os.system(f"python3 {name}/app.py")
     return 0
 def removeapp(name):
-    appavailable = False
-    appfoldername = False
-    weburl = False
-    d = open(f"sources.conf", "r")
-    print("Checking package sources...")
-    for index, line in enumerate(d):
-        if appavailable:
-            weburl = line.strip()
-            break
-        if line.strip() == app:
-            print(f"Found {app} in sources!")
-            appfoldername = line.strip()
-            appavailable = True
-            continue
-    
-    d.close()
-    if weburl == False or appfoldername == False or appavailable == False:
-        return 1
-    print(f"Are you sure you want to remove {name}?")
-    choice = input(f"N or n for no, or anything else for yes: ")
-    if choice != "N" or choice != "n":
-        os.system(f"rm -rf {name}")
-        print(f"Removed {name}")
-    else:
-        print("Aborted.")
-
+    try:
+        appavailable = False
+        appfoldername = False
+        weburl = False
+        d = open(f"sources.conf", "r")
+        print("Checking package sources...")
+        for index, line in enumerate(d):
+            if appavailable:
+                weburl = line.strip()
+                break
+            if line.strip() == app:
+                print(f"Found {app} in sources!")
+                appfoldername = line.strip()
+                appavailable = True
+                continue
+        
+        d.close()
+        if weburl == False or appfoldername == False or appavailable == False:
+            print("App not there!")
+            return 1
+        print(f"Are you sure you want to remove {name}?")
+        choice = input(f"N or n for no, or anything else for yes: ")
+        if choice != "N" or choice != "n":
+            os.system(f"rm -rf {name}")
+            print(f"Removed {name}")
+        else:
+            print("Aborted.")
+    except:
+        print("Removing failed.")
 
 # Update time
 
