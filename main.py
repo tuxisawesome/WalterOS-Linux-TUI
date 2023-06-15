@@ -81,7 +81,12 @@ if __name__ != "__main__":
     os.system("clear")
     execloop()
 else:
-    command = sys.argv[1]
+    command = []
+    try:
+        command = sys.argv[1]
+    except:
+        print("Commands are: update, install, list, remove, run.")
+    
     if command == "update":
         if 2 in range(len(sys.argv)):
             appinstall.checkappupdate(sys.argv[2])
@@ -97,3 +102,13 @@ else:
     elif command == "list":
         appinstall.listapps()
     
+    elif command == "remove":
+        if 2 in range(len(sys.argv)):
+            appinstall.removeapp(sys.argv[2])
+    
+        else:
+            print("Please put the name of the app like so: main.py remove [nameofapp]")
+    elif command == "run":
+        appinstall.runapp(sys.argv[2])
+    else:
+        pass

@@ -10,7 +10,8 @@ def installapp(name):
         print("Checking package sources...")
         for index, line in enumerate(d):
             if appavailable:
-                weburl = line.strip()[:-2]
+                weburl = line.strip()
+                weburl = weburl[2:]
                 break
             if line.strip() == name:
                 print(f"Found {name} in sources!")
@@ -136,7 +137,8 @@ def checkappupdate(app):
     print("Checking package sources...")
     for index, line in enumerate(d):
         if appavailable2:
-            weburl = line.strip()[:-2]
+            weburl = line.strip()
+            weburl = weburl[2:]
             break
         if appavailable:
             appavailable2 = True
