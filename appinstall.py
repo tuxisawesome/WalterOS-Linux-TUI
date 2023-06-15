@@ -10,10 +10,10 @@ def installapp(name):
         print("Checking package sources...")
         for index, line in enumerate(d):
             if appavailable:
-                weburl = line.strip()
+                weburl = line.strip()[:-2]
                 break
-            if line.strip() == app:
-                print(f"Found {app} in sources!")
+            if line.strip() == name:
+                print(f"Found {name} in sources!")
                 appfoldername = line.strip()
                 appavailable = True
                 continue
@@ -25,8 +25,8 @@ def installapp(name):
         print(f"Are you sure you want to install {name}?")
         choice = input(f"N or n for no, or anything else for yes: ")
         if choice != "N" or choice != "n":
-            os.system(f"git clone {weburl} {name}")
-            os.system(f"python3 {name}/setup.py")
+            os.system(f"git clone {weburl} apps/{name}")
+            os.system(f"python3 apps/{name}/setup.py")
             print(f"Installed {name}")
         else:
             print("Aborted")
@@ -38,12 +38,16 @@ def listapps():
     d = open(f"sources.conf", "r")
     print("Checking package sources...")
     print("-----------------------")
-    print("")
     for index, line in enumerate(d):
-        counter = counter + 1
-        if counter % 2 != 0:
-            print(line.strip())
-    print("")
+        if line[0] == "#":
+            continue
+        if line[0] == "s":
+            if line[1] == "@":
+                continue
+        print()
+        print(line)
+        print()
+        
     print("-----------------------")
     d.close()
 
@@ -69,7 +73,7 @@ def runapp(app):
     d.close()
     if weburl == False or appfoldername == False or appavailable == False:
         return 1
-    os.system(f"python3 {name}/app.py")
+    os.system(f"python3 apps/{app}/app.py")
     return 0
 def removeapp(name):
     try:
@@ -82,8 +86,8 @@ def removeapp(name):
             if appavailable:
                 weburl = line.strip()
                 break
-            if line.strip() == app:
-                print(f"Found {app} in sources!")
+            if line.strip() == name:
+                print(f"Found {name} in sources!")
                 appfoldername = line.strip()
                 appavailable = True
                 continue
@@ -95,7 +99,7 @@ def removeapp(name):
         print(f"Are you sure you want to remove {name}?")
         choice = input(f"N or n for no, or anything else for yes: ")
         if choice != "N" or choice != "n":
-            os.system(f"rm -rf {name}")
+            os.system(f"rm -rf apps/{name}")
             print(f"Removed {name}")
         else:
             print("Aborted.")
@@ -131,9 +135,12 @@ def checkappupdate(app):
     d = open(f"sources.conf", "r")
     print("Checking package sources...")
     for index, line in enumerate(d):
-        if appavailable:
-            weburl = line.strip()
+        if appavailable2:
+            weburl = line.strip()[:-2]
             break
+        if appavailable:
+            appavailable2 = True
+            continue
         if line.strip() == app:
             print(f"Found {app} in sources!")
             appfoldername = line.strip()
@@ -144,7 +151,7 @@ def checkappupdate(app):
     if weburl == False or appfoldername == False or appavailable == False:
         print("App not found!")
         return 1
-    cv = open(f"{app}/version.txt")
+    cv = open(f"apps/{app}/version.txt")
 
     currentversion = cv.readline()
     cv.close()
@@ -159,5 +166,5 @@ def checkappupdate(app):
         choice = input("y for yes, or anything else for no: ")
         if choice == "y" or choice == "Y":
             print(f"Updating {app} to {latestversion}")
-            os.system(f"cd {app} && git pull")
+            os.system(f"cd apps/{app} && git pull")
             print("Updated!")

@@ -77,7 +77,23 @@ def execloop():
 
 
 
+if __name__ != "__main__":
+    os.system("clear")
+    execloop()
+else:
+    command = sys.argv[1]
+    if command == "update":
+        if 2 in range(len(sys.argv)):
+            appinstall.checkappupdate(sys.argv[2])
+        else:
+            appinstall.checksysupdate()
+    elif command == "install":
+        if 2 in range(len(sys.argv)):
+            appinstall.installapp(sys.argv[2])
 
-execloop()
+        else:
+            print("Please put the name of the app like so: main.py install [nameofapp]")
 
-
+    elif command == "list":
+        appinstall.listapps()
+    
