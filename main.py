@@ -1,13 +1,11 @@
-import appinstall
-import os
-import sys
-import time
+import appinstall, update, addsources # Local imports
+import os, sys, time
 cv = open("version.txt", "r")
 currentversion = cv.readline()
 cv.close()
 
-print(f"WalterOS version {currentversion}")
 def execpkgloop():
+    print(f"WalterOS version {currentversion}")
     keepexecpkgloop = True
     while keepexecpkgloop:
         print("Press 1 for Checking system update")
@@ -85,19 +83,19 @@ else:
     try:
         command = sys.argv[1]
     except:
-        print("Commands are: update, install, list, remove, run.")
+        print("Commands are: update, install, list, remove, run, addsource, removesource")
     
     if command == "update":
         if 2 in range(len(sys.argv)):
-            appinstall.checkappupdate(sys.argv[2])
+            update.checkappupdate(sys.argv[2])
         else:
-            appinstall.checksysupdate()
+            update.checksysupdate()
     elif command == "install":
         if 2 in range(len(sys.argv)):
             appinstall.installapp(sys.argv[2])
 
         else:
-            print("Please put the name of the app like so: main.py install [nameofapp]")
+            print("Please put the name of the app like so: tyr install [nameofapp]")
 
     elif command == "list":
         appinstall.listapps()
@@ -107,8 +105,27 @@ else:
             appinstall.removeapp(sys.argv[2])
     
         else:
-            print("Please put the name of the app like so: main.py remove [nameofapp]")
+            print("Please put the name of the app like so: tyr remove [nameofapp]")
     elif command == "run":
-        appinstall.runapp(sys.argv[2])
+        try:
+            appinstall.runapp(sys.argv[2])
+        except:
+            print("The app is not there.")
+    elif command == "addsource":
+        if 2 in range(len(sys.argv)):
+            if 3 in range(len(sys.argv)):
+                if 4 in range(len(sys.argv)):
+                    addsources.addsource(sys.argv[2],sys.argv[4],sys.argv[3])
+                else:
+                    print("Please execute the command as follows: tyr addsource [nameofapp] [appurl] [appversion]")
+            else:
+                print("Please execute the command as follows: tyr addsource [nameofapp] [appurl] [appversion]")
+        else:
+            print("Please execute the command as follows: tyr addsource [nameofapp] [appurl] [appversion]")
+    elif command == "removesource":
+        if 2 in range(len(sys.argv)):
+            addsources.removesource(sys.argv[2])
+        else:
+            print("Please execute the command as follows: tyr removesource [nameofapp]")
     else:
         pass
