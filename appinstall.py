@@ -2,48 +2,58 @@ import os
 import sys
 import requests
 
-def installapp(name):
+def installapp(name,silent=False,nofirstrun=False):
     try:
         appavailable = False
 
         d = open(f"sources.conf", "r")
-        print("Checking package sources...")
+        if not silent:
+            print("Checking package sources...")
         for index, line in enumerate(d):
             if appavailable:
                 weburl = line.strip()
                 weburl = weburl[2:]
                 break
             if line.strip() == name:
-                print(f"Found {name} in sources!")
+                if not silent:
+                    print(f"Found {name} in sources!")
                 appfoldername = line.strip()
                 appavailable = True
                 continue
     
         d.close()
+        choice = ""
         if appavailable == False:
             print("App not found!")
             return 1
-        print(f"Are you sure you want to install {name}?")
-        choice = input(f"Y or y for yes, or anything else for no: ")
+        if not silent:
+            print(f"Are you sure you want to install {name}?")
+            choice = input(f"Y or y for yes, or anything else for no: ")
+        else:
+            choice = "Y"
         if choice == "Y" or choice == "y":
             if os.path.isdir(f"apps/{name}"):
-                print("")
-                print(f"{name} is already installed!")
-                print("")
+                if not silent:
+                    print("")
+                    print(f"{name} is already installed!")
+                    print("")
+                return 3
             else:
-                os.system(f"git clone {weburl} apps/{name}")
-                os.system(f"python3 apps/{name}/setup.py")
-                print(f"Installed {name}")
+                os.system(f"git clone {weburl} apps/{name} >/dev/null 2>&1")
+                if not nofirstrun:
+                    os.system(f"python3 apps/{name}/setup.py")
+                if not silent:
+                    print(f"Installed {name}")
+                return 0
         else:
             print("Aborted")
     except:
-        print("Installing failed")
+        print(f"Installing failed for app {name}")
 
 def listapps():
     counter = 0
     d = open(f"sources.conf", "r")
-    print("Checking package sources...")
-    print("-----------------------")
+    print("-----------------------------------")
     s1 = False
     s2 = False
     x = ""
@@ -62,10 +72,19 @@ def listapps():
                 if s1 == True:
                     s2 = True
                     continue
+        x = installapp(name=line.rstrip("\n"),silent=True,nofirstrun=True)
+        if x == 3:
+            print("*   ",end="")
+        elif x == 1:
+            print("!   ",end="")
+        else:
+            print("    ",end="")
         print(line.rstrip("\n"))
+        if x != 3:
+            removeapp(line.rstrip("\n"),True)
         s1 = True
         
-    print("-----------------------")
+    print("-----------------------------------")
     d.close()
 
 
@@ -92,19 +111,21 @@ def runapp(app):
         return 1
     os.system(f"python3 apps/{app}/app.py")
     return 0
-def removeapp(name):
+def removeapp(name, silent=False):
     try:
         appavailable = False
         appfoldername = False
         weburl = False
         d = open(f"sources.conf", "r")
-        print("Checking package sources...")
+        if not silent:
+            print("Checking package sources...")
         for index, line in enumerate(d):
             if appavailable:
                 weburl = line.strip()
                 break
             if line.strip() == name:
-                print(f"Found {name} in sources!")
+                if not silent:
+                    print(f"Found {name} in sources!")
                 appfoldername = line.strip()
                 appavailable = True
                 continue
@@ -113,11 +134,16 @@ def removeapp(name):
         if weburl == False or appfoldername == False or appavailable == False:
             print("App not there!")
             return 1
-        print(f"Are you sure you want to remove {name}?")
-        choice = input(f"Y or y for yes, or anything else for no: ")
+        choice = ""
+        if not silent:
+            print(f"Are you sure you want to remove {name}?")
+            choice = input(f"Y or y for yes, or anything else for no: ")
+        else:
+            choice = "Y"
         if choice == "Y" or choice == "y":
             os.system(f"rm -rf apps/{name}")
-            print(f"Removed {name}")
+            if not silent:
+                print(f"Removed {name}")
         else:
             print("Aborted.")
     except:
