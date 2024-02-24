@@ -41,7 +41,7 @@ def installapp(name,silent=False,nofirstrun=False):
             else:
                 os.system(f"git clone {weburl} apps/{name} >/dev/null 2>&1")
                 if not nofirstrun:
-                    os.system(f"python3 apps/{name}/setup.py")
+                    os.system(f"cd apps/{name} && python3 setup.py")
                 if not silent:
                     print(f"Installed {name}")
                 return 0
