@@ -109,7 +109,7 @@ def runapp(app):
     d.close()
     if weburl == False or appfoldername == False or appavailable == False:
         return 1
-    os.system(f"python3 apps/{app}/app.py")
+    os.system(f"cd apps/{app} && python3 app.py")
     return 0
 def removeapp(name, silent=False):
     try:
