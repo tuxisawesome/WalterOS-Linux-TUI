@@ -2,6 +2,33 @@ import os
 import sys
 import requests
 
+
+def checkforApp(name,silent=False):
+    appavailable = False
+
+    d = open(f"sources.conf", "r")
+    if not silent:
+        print("Checking package sources...")
+    for index, line in enumerate(d):
+        if appavailable:
+            weburl = line.strip()
+            weburl = weburl[2:]
+            break
+        if line.strip() == name:
+            if not silent:
+                print(f"Found {name} in sources!")
+            appfoldername = line.strip()
+            appavailable = True
+            continue
+    d.close()
+
+    if appavailable:
+        return 0
+    else:
+        return 1
+
+
+
 def installapp(name,silent=False,nofirstrun=False):
     try:
         appavailable = False
@@ -72,16 +99,14 @@ def listapps():
                 if s1 == True:
                     s2 = True
                     continue
-        x = installapp(name=line.rstrip("\n"),silent=True,nofirstrun=True)
-        if x == 3:
+        # x = installapp(name=line.rstrip("\n"),silent=True,nofirstrun=True)
+        if os.path.isdir(f"apps/{line.rstrip("\n")}"):
             print("*   ",end="")
-        elif x == 1:
+        elif checkforApp(line.rstrip("\n"),True) == 1:
             print("!   ",end="")
         else:
             print("    ",end="")
         print(line.rstrip("\n"))
-        if x != 3:
-            removeapp(line.rstrip("\n"),True)
         s1 = True
         
     print("-----------------------------------")

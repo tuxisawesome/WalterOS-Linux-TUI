@@ -5,20 +5,13 @@ currentversion = cv.readline()
 cv.close()
 
 def execpkgloop():
-    print(f"WalterOS version {currentversion}")
     keepexecpkgloop = True
     while keepexecpkgloop:
-        print("Press 1 for Checking system update")
-        print("Press 2 followed by the app for installing a app")
-        print("Press 3 followed by the app to remove the app")
-        print("Press 4 to list all applications")
-        print("Press 5 followed by the name of a app to update the app")
-        print("Press b to go back")
-        print("Press e to exit")
         choice = input(f"WalterOS::{currentversion} | wpkg> ")
         if choice == "1":
-            appinstall.checksysupdate()
-
+            update.checksysupdate()
+        elif choice == "h":
+            helppkg()
         elif choice.startswith("2"):
             apptoinstall = choice[2:]
             appinstall.installapp(apptoinstall)
@@ -29,10 +22,7 @@ def execpkgloop():
             appinstall.listapps()
         elif choice.startswith("5"):
             apptoupdate = choice[2:]
-            appinstall.checkappupdate(apptoupdate)
-        elif choice == "e" or choice == "E":
-            print("Bye")
-            sys.exit()
+            update.checkappupdate(apptoupdate)
         elif choice == "b" or choice == "B":
             keepexecpkgloop = False
         else:
@@ -41,11 +31,8 @@ def execpkgloop():
 
 def execloop():
     keepexecloop = True
+    print("Press 'h' for help at any point in this application.")
     while keepexecloop:
-        print("Press 1 for Package Manager")
-        print("Press r followed by the app to run the app")
-        print("Press p for power options")
-        print("Press e to exit")
         choice = input(f"WalterOS::{currentversion}> ")
         if choice == "1":
             execpkgloop()
@@ -60,6 +47,8 @@ def execloop():
                 os.system("shutdown")
             elif choice == "p" or choice == "P":
                 os.system("reboot")
+        elif choice == "h":
+            help1()
         elif choice.startswith("r"):
             app = choice[2:]
             try:
@@ -70,9 +59,21 @@ def execloop():
     
     
 
+def help1():
+    print("Press 1 for Package Manager")
+    print("Press r followed by the app to run the app")
+    print("Press p for power options")
+    print("Press h for help")
+    print("Press e to exit")
 
-
-
+def helppkg():
+    print("Press h for help")
+    print("Press 1 for Checking system update")
+    print("Press 2 followed by the app for installing a app")
+    print("Press 3 followed by the app to remove the app")
+    print("Press 4 to list all applications")
+    print("Press 5 followed by the name of a app to update the app")
+    print("Press b to go back")
 
 
 if __name__ != "__main__":
