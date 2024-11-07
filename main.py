@@ -27,7 +27,6 @@ def execpkgloop():
             keepexecpkgloop = False
         else:
             pass
-        print("")
 
 def execloop():
     keepexecloop = True
@@ -55,7 +54,6 @@ def execloop():
                 appinstall.runapp(app)
             except:
                 print("The app is not there...")
-        print("")
     
     
 
