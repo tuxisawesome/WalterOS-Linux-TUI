@@ -196,7 +196,7 @@ def removeapp(name, silent=False, ff=False):
             choice = "Y"
         if choice == "Y" or choice == "y":
             if ff:
-                os.system(f"rm -rf bin/{name}")
+                os.system(f"rm -rf bin /{name}")
             else:
                 os.system(f"rm -rf apps/{name}")
             if not silent:
