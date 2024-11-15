@@ -1,23 +1,37 @@
-def addsource(name,version,url):
+def addsource(name,version,url,ff=False):
     print()
     print(" ######### ARE YOU SURE??? ######### ")
     print(" Are you sure you want to add a new  ")
     print(" source? type Y or y for yes or any  ")
-    choice = input(" thing else to cancel: ")
+
+    if not ff:
+        choice = input(" thing else to cancel: ")
+    else:
+        choice = "y"
     if choice == "Y" or "y":
-        with open("sources.conf","a") as w:
-            w.writelines(f"\n# {name}\n{name}\ns@{url}\ns@{version}")
+        if not ff:
+            with open("sources.conf","a") as w:
+                w.writelines(f"\n# {name}\n{name}\ns@{url}\ns@{version}")
+        else:
+            with open("etc/sources.conf","a") as w:
+                w.writelines(f"\n# {name}\n{name}\ns@{url}\ns@{version}")
     else:
         print("Aborted.")
 
-def removesource(name):
+def removesource(name,ff=False):
     print()
     print(" ######### ARE YOU SURE??? ######### ")
     print(" Are you sure you want to remove a   ")
     print(" source? type Y or y for yes or any  ")
-    choice = input(" thing else to cancel: ")
+    if not ff:
+        choice = input(" thing else to cancel: ")
+    else:
+        choice = "y"
     if choice == "Y" or "y":
-        d = open(f"sources.conf", "r")
+        if ff:
+            d = open(f"etc/sources.conf", "r")
+        else:
+            d = open(f"sources.conf","r")
         indexname = 0
         indexver = 0
         indexurl = 0
